@@ -17,7 +17,7 @@ const ExpenseForm = ({ setExpenses }) => {
     }
 
     if (!formData.category) {
-      errorsData.category = 'Category is required'
+      errorsData.category = 'Please select a category'
     }
 
     if (!formData.amount) {
@@ -32,7 +32,7 @@ const ExpenseForm = ({ setExpenses }) => {
     e.preventDefault()
 
     const validateResult = validate(expense)
-    if (!Object.keys(validateResult).length) return
+    if (Object.keys(validateResult).length) return
 
     setExpenses((prevState) => [...prevState, { ...expense, id: crypto.randomUUID() }])
     setExpense({
@@ -45,6 +45,7 @@ const ExpenseForm = ({ setExpenses }) => {
   const handleChange = (e) => {
     const { name, value } = e.target
     setExpense((prevState) => ({ ...prevState, [name]: value }))
+    setErrors({})
   }
 
   return (
