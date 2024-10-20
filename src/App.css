@@ -128,6 +128,10 @@ main {
   top: 100%;
 }
 
+.clear-sort {
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   body {
     margin-inline: 16px;
